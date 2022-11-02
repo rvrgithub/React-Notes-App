@@ -3,18 +3,23 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Cards } from "./Cards";
 import { CreateNotes } from "./CreateNote";
+// import ReactPaginate from 'react-paginate';
 import "./style.css";
+import { Pagination } from "./Pagination";
 export const Home = () => {
   const [noteCard, setNoteCard] = useState([]);
+  const [showPerPage,setShowPerPage] = useState(4);
+  const [pagination,setPagination] = useState({
+start:0,
+end:showPerPage,
+  })
   const addNote = (notes) => {
-    // console.log("data",notes)
     setNoteCard((prev) => [...prev, notes]);
   };
   const onDeleteNote = (id) => {
     console.log("id", id);
     setNoteCard((e) => e.filter((cu, ind) => ind !== id));
   };
-  console.log("dayta", noteCard);
   // data store in localstorage...
   const LOCAL_STORAGE_KEY = "Notes-list";
 
@@ -26,7 +31,9 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(noteCard));
+    if (noteCard.length > 0) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(noteCard));
+    }
   }, [noteCard]);
 
   const getColor = () => {
@@ -45,11 +52,18 @@ export const Home = () => {
       ")"
     );
   };
+
+  // pagination .....
+  const paginationFunc =(start,end)=>{
+console.log("page",start,end)
+setPagination({start,end})
+  }
+let totalLength= noteCard.length;
   return (
     <div>
       <CreateNotes addNote={addNote} />
       <Box className="box">
-        {noteCard.map((e, index) => (
+        {noteCard.slice(pagination.start,pagination.end).map((e, index) => (
           <Box key={index}>
             {" "}
             <Cards
@@ -60,7 +74,9 @@ export const Home = () => {
             />
           </Box>
         ))}
+       
       </Box>
+      <Pagination showPerPage={showPerPage} paginationFunc={paginationFunc} totalLength={totalLength}/>
     </div>
   );
 };
