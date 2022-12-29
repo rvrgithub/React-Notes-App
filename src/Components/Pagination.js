@@ -1,7 +1,7 @@
 import { Box, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
-
+import "./style.css"
 export const Pagination = ({ showPerPage, paginationFunc, totalLength }) => {
   const [counter, setCounter] = useState(1);
   useEffect(() => {
@@ -9,10 +9,9 @@ export const Pagination = ({ showPerPage, paginationFunc, totalLength }) => {
     console.log("showPerPage", value - showPerPage, value);
     paginationFunc(value - showPerPage, value);
   }, [counter]);
-
   let lastPage = Math.ceil(totalLength / showPerPage);
   return (
-    <Box  display='flex' justifyContent="space-between">
+    <Box className="pagination">
       <Button
         disabled={counter === 1 ? true : false}
         onClick={() => setCounter(counter - 1)}

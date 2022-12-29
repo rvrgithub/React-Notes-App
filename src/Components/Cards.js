@@ -1,6 +1,6 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import React from "react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 export const Cards = (prop) => {
   console.log("prop", prop.id);
   const deleteNote = (id) => {
@@ -21,6 +21,15 @@ export const Cards = (prop) => {
       <Text fontWeight={"bold"}>{prop.data.title}</Text>
       <Text>{prop.data.description}</Text>
       <Text>{prop.data.date}</Text>
+      <Button
+        marginLeft={"92%"}
+        marginTop="10px"
+        w="25px"
+        borderRadius="50%"
+        onClick={deleteNote}
+      >
+      <EditIcon/>
+      </Button>
       <Button
         marginLeft={"92%"}
         marginTop="10px"

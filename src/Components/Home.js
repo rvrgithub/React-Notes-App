@@ -3,16 +3,17 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Cards } from "./Cards";
 import { CreateNotes } from "./CreateNote";
-// import ReactPaginate from 'react-paginate';
 import "./style.css";
 import { Pagination } from "./Pagination";
+import { DragHandleIcon } from "@chakra-ui/icons";
 export const Home = () => {
   const [noteCard, setNoteCard] = useState([]);
-  const [showPerPage,setShowPerPage] = useState(4);
-  const [pagination,setPagination] = useState({
-start:0,
-end:showPerPage,
-  })
+  const [searchValue, setSearchValue] = useState("");
+  const [showPerPage, setShowPerPage] = useState(4);
+  const [pagination, setPagination] = useState({
+    start: 0,
+    end: showPerPage,
+  });
   const addNote = (notes) => {
     setNoteCard((prev) => [...prev, notes]);
   };
@@ -54,16 +55,16 @@ end:showPerPage,
   };
 
   // pagination .....
-  const paginationFunc =(start,end)=>{
-console.log("page",start,end)
-setPagination({start,end})
-  }
-let totalLength= noteCard.length;
+  const paginationFunc = (start, end) => {
+    setPagination({ start, end });
+  };
+  let totalLength = noteCard.length;
+
   return (
     <div>
       <CreateNotes addNote={addNote} />
       <Box className="box">
-        {noteCard.slice(pagination.start,pagination.end).map((e, index) => (
+        {noteCard.slice(pagination.start, pagination.end).map((e, index) => (
           <Box key={index}>
             {" "}
             <Cards
@@ -74,9 +75,13 @@ let totalLength= noteCard.length;
             />
           </Box>
         ))}
-       
       </Box>
-      <Pagination showPerPage={showPerPage} paginationFunc={paginationFunc} totalLength={totalLength}/>
+      <DragHandleIcon/>
+      <Pagination
+        showPerPage={showPerPage}
+        paginationFunc={paginationFunc}
+        totalLength={totalLength}
+      />
     </div>
   );
 };
