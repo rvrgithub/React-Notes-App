@@ -76,7 +76,6 @@ export const Home = () => {
           </Box>
         ))}
       </Box>
-      <DragHandleIcon/>
       <Pagination
         showPerPage={showPerPage}
         paginationFunc={paginationFunc}
