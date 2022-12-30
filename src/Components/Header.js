@@ -1,31 +1,39 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
+import {  Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
-import { useMediaQuery } from '@chakra-ui/react'
+import { useMediaQuery } from "@chakra-ui/react";
+import {SunIcon } from "@chakra-ui/icons";
 
-export const Header = () => {
-const [isNoteSmallScreen] = useMediaQuery("(min-width:750px)")
+export const Header = (props) => {
+  const [isNoteSmallScreen] = useMediaQuery("(min-width:750px)");
+  const Bg = useColorModeValue('#ffc008', '#1a202c')
+  const BoxShadow=useColorModeValue("20px 20px 50px 10px orange inset","20px 20px 20px 10px black  inset" )
   return (
-    <Flex direction="row" h="80px" p="10px 50px" bg="#ffc008"  boxShadow= "20px 20px 50px 10px orange inset">
+    <Flex
+      direction="row"
+      h="80px"
+      p="10px 50px"
+      bg={Bg}
+      justifyContent={"space-between"}
+      boxShadow={BoxShadow}
+    >
       <Image
-        // w="10%"
         w={isNoteSmallScreen ? "11%" : "11%"}
         h="100%"
-        src="https://yanado.com/blog/wp-content/uploads/2015/01/google-keep-logo.png"
+        src={"https://yanado.com/blog/wp-content/uploads/2015/01/google-keep-logo.png"}
         alt="logo_image"
       />
       <Text
         fontWeight={"700"}
-        // fontSize="35px"
         fontSize={isNoteSmallScreen ? "35px" : "20px"}
-        lineHeight={isNoteSmallScreen ? "40px" : "45px"}
+        lineHeight={isNoteSmallScreen ? "35px" : "25px"}
         textAlign={"center"}
         marginLeft="35%"
-        // lineHeight={"40px"}
         letterSpacing="10px"
-        color="white"
+        color={"white"}
       >
         Keep Notes
       </Text>
+      <SunIcon fontSize={"30px"} margin="5px 10px 0 28%"  onClick={props.onClick}/>
     </Flex>
   );
 };

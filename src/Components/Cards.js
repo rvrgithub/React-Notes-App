@@ -4,7 +4,7 @@ import { DeleteIcon, DragHandleIcon, EditIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 export const Cards = (prop) => {
   const [show, setShow] = useState(false);
-  console.log("prop", prop.id);
+  // console.log("prop", prop.id);
   const deleteNote = (id) => {
     // console.log("id",prop.id);
     prop.onDeleteNote(prop.id);
@@ -12,7 +12,7 @@ export const Cards = (prop) => {
   const showIcons = () => {
     setShow(!show);
   };
-  console.log("show", show);
+  // console.log("show", show);
   return (
     <Box
       margin={"auto"}

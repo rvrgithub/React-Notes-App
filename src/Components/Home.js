@@ -19,8 +19,16 @@ export const Home = () => {
   };
   const onDeleteNote = (id) => {
     console.log("id", id);
-    setNoteCard((e) => e.filter((cu, ind) => ind !== id));
+    setNoteCard((e) => e.filter((cu, ind) => (
+      ind !== id
+    )));
   };
+
+// update functions .........
+const onEdite=()=>{
+  
+}
+
   // data store in localstorage...
   const LOCAL_STORAGE_KEY = "Notes-list";
 
@@ -32,7 +40,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (noteCard.length > 0) {
+    if (noteCard.length >= 0) {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(noteCard));
     }
   }, [noteCard]);
@@ -71,6 +79,7 @@ export const Home = () => {
               data={e}
               id={index}
               onDeleteNote={onDeleteNote}
+              onEdite={onEdite}
               color={getColor()}
             />
           </Box>

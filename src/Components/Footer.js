@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
 import "./style.css"
-export const Footer = () => {
+export const Footer = (props) => {
   return (
-    <Box className='footer'></Box>
+    <Box className='footer' bg={props.Bg}></Box>
   )
 }

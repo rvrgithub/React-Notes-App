@@ -6,7 +6,7 @@ export const Pagination = ({ showPerPage, paginationFunc, totalLength }) => {
   const [counter, setCounter] = useState(1);
   useEffect(() => {
     const value = showPerPage * counter;
-    console.log("showPerPage", value - showPerPage, value);
+    // console.log("showPerPage", value - showPerPage, value);
     paginationFunc(value - showPerPage, value);
   }, [counter]);
   let lastPage = Math.ceil(totalLength / showPerPage);
