@@ -5,7 +5,6 @@ import { Cards } from "./Cards";
 import { CreateNotes } from "./CreateNote";
 import "./style.css";
 import { Pagination } from "./Pagination";
-import { DragHandleIcon } from "@chakra-ui/icons";
 export const Home = () => {
   const [noteCard, setNoteCard] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -26,7 +25,7 @@ export const Home = () => {
 
 // update functions .........
 const onEdite=()=>{
-  
+
 }
 
   // data store in localstorage...
@@ -45,22 +44,6 @@ const onEdite=()=>{
     }
   }, [noteCard]);
 
-  const getColor = () => {
-    var o = Math.round,
-      r = Math.random,
-      s = 255;
-    return (
-      "rgba(" +
-      o(r() * s) +
-      "," +
-      o(r() * s) +
-      "," +
-      o(r() * s) +
-      "," +
-      r().toFixed(1) +
-      ")"
-    );
-  };
 
   // pagination .....
   const paginationFunc = (start, end) => {
@@ -80,7 +63,8 @@ const onEdite=()=>{
               id={index}
               onDeleteNote={onDeleteNote}
               onEdite={onEdite}
-              color={getColor()}
+              // color={getColor()}
+              // color={ThemeColor}
             />
           </Box>
         ))}
@@ -90,6 +74,8 @@ const onEdite=()=>{
         paginationFunc={paginationFunc}
         totalLength={totalLength}
       />
+
     </div>
+
   );
 };

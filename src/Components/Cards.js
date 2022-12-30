@@ -1,23 +1,32 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import React from "react";
-import { DeleteIcon, DragHandleIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon, DragHandleIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import { ColorTheme } from "./ColorTheme";
 export const Cards = (prop) => {
   const [show, setShow] = useState(false);
-  // console.log("prop", prop.id);
+  // const [addcolor, setAddColor] = useState({});
+
   const deleteNote = (id) => {
-    // console.log("id",prop.id);
     prop.onDeleteNote(prop.id);
   };
   const showIcons = () => {
     setShow(!show);
   };
-  // console.log("show", show);
+  // const colorTheme = (color) => {
+  //   // console.log("colorbyCard", color);
+  //   setAddColor(color);
+  //   localStorage.setItem("colorTheme" ,JSON.stringify(color));
+  // };
+  // console.log("update color", addcolor);
+  // const ThemeColor = JSON.parse(localStorage.getItem("colorTheme"));
+
   return (
     <Box
       margin={"auto"}
       borderRadius="md"
-      bg={prop.color}
+      // bg={prop.color}
+      bg={prop.data.color}
       boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
       px={4}
       h="autoFit"
@@ -34,17 +43,11 @@ export const Cards = (prop) => {
         onClick={showIcons}
       />
       {show ? (
-        <Box
-          position={"reletive"}
-          w="50px"
-          // background={"white"}
-          marginLeft="100%"
-          // marginLeft={"92%"}
-          marginTop="10px"
-        >
-          <Button w="25px" borderRadius="50%">
+        <Box position={"reletive"} w="50px" marginLeft="100%" marginTop="10px">
+          {/* <ColorTheme colorTheme={colorTheme} /> */}
+          {/* <Button w="25px" borderRadius="50%">
             <EditIcon />
-          </Button>
+          </Button> */}
           <Button w="25px" borderRadius="50%" onClick={deleteNote}>
             <DeleteIcon fontSize={"20px"} />
           </Button>

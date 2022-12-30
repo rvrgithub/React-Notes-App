@@ -10,6 +10,7 @@ const [isLessThenValue] = useMediaQuery("(min-width:750px)")
     title: "",
     description: "",
     date: "",
+    color:""
   });
   const handleAddNotes = (e) => {
     const { name, value } = e.target;
@@ -26,9 +27,11 @@ const [isLessThenValue] = useMediaQuery("(min-width:750px)")
       title: "",
       description: "",
       date: "",
+      color:""
     });
     setDisplay("none");
   };
+  // console.log("data",notes)
   return (
     <Box w={isLessThenValue ? "30%" : "80%"}  margin={"auto"} marginBottom="0">
       <form>
@@ -56,15 +59,22 @@ const [isLessThenValue] = useMediaQuery("(min-width:750px)")
             name="date"
             onChange={handleAddNotes}
           />
+             <Input type="color" w={"19%"} h="35px" name={"color"}
+            ml="63%"
+            value={notes.color}
+            //  placeholder="Pic a color"
+             onChange={handleAddNotes}
+    />
           <Button
             marginLeft={"90%"}
-            marginTop="0"
+            marginTop="-60px"
             borderRadius="20%"
             type="submit"
             onClick={addNotes}
           >
             <AddIcon />
           </Button>
+       
         </Box>
       </form>
     </Box>
