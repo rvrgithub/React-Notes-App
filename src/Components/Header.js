@@ -14,6 +14,7 @@ export const Header = (props) => {
       p="10px 50px"
       bg={Bg}
       justifyContent={"space-between"}
+  alignItems={"center"}
       boxShadow={BoxShadow}
     >
       <Image
@@ -27,13 +28,13 @@ export const Header = (props) => {
         fontSize={isNoteSmallScreen ? "35px" : "20px"}
         lineHeight={isNoteSmallScreen ? "35px" : "25px"}
         textAlign={"center"}
-        marginLeft="35%"
+        
         letterSpacing="10px"
         color={"white"}
       >
         Keep Notes
       </Text>
-      <SunIcon fontSize={"30px"} margin="5px 10px 0 28%"  onClick={props.onClick}/>
+      <SunIcon fontSize={"30px"}   onClick={props.onClick}/>
     </Flex>
   );
 };
