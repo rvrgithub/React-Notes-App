@@ -53,6 +53,7 @@ const onEdite=()=>{
 
   return (
     <div>
+    <div style={{height:"5vh"}}></div>
       <CreateNotes addNote={addNote} />
       <Box className="box">
         {noteCard.slice(pagination.start, pagination.end).map((e, index) => (
