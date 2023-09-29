@@ -6,7 +6,10 @@ import { CreateNotes } from "./CreateNote";
 import "./style.css";
 import { Pagination } from "./Pagination";
 export const Home = () => {
-  const [noteCard, setNoteCard] = useState([]);
+  const [noteCard, setNoteCard] = useState([{ "title": "Meeting Prep", "color": "#3399FF", "description": "Review Agenda, Prepare Slides, Collect Reports, Charge Laptop, Bring Notepad, Confirm Conference Room Booking, Water Bottle.", "date": "2023-09-12" }, 
+    { "title": "Weekend Getaway - Beach Trip", "color": "#05F6E4","description": "Pack Sunscreen, Swimsuit, Towels, Snacks, Beach Chairs, Umbrella, Sunglasses, Camera, Bluetooth Speaker. Departure at 9 AM.", "date": "2023-09-28" },
+    { "title": " Weekly Team Meeting", "color": "#05F659",  "description": "Discussed project updates, assigned action items, reviewed deadlines, and planned next week's tasks. Attendees: John, Sarah, Alice, Bob", "date": "2023-08-30",  }]);
+  console.log(noteCard)
   const [searchValue, setSearchValue] = useState("");
   const [showPerPage, setShowPerPage] = useState(4);
   const [pagination, setPagination] = useState({
@@ -23,13 +26,16 @@ export const Home = () => {
     )));
   };
 
-// update functions .........
-const onEdite=()=>{
+  // update functions .........
+  const onEdite = () => {
 
-}
+  }
 
+  console.log(noteCard)
   // data store in localstorage...
   const LOCAL_STORAGE_KEY = "Notes-list";
+
+  localStorage.setItem("Notes-list", JSON.stringify(noteCard))
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -53,7 +59,7 @@ const onEdite=()=>{
 
   return (
     <div>
-    <div style={{height:"5vh"}}></div>
+      <div style={{ height: "5vh" }}></div>
       <CreateNotes addNote={addNote} />
       <Box className="box">
         {noteCard.slice(pagination.start, pagination.end).map((e, index) => (
@@ -64,8 +70,8 @@ const onEdite=()=>{
               id={index}
               onDeleteNote={onDeleteNote}
               onEdite={onEdite}
-              // color={getColor()}
-              // color={ThemeColor}
+            // color={getColor()}
+            // color={ThemeColor}
             />
           </Box>
         ))}
